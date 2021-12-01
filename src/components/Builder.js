@@ -21,11 +21,11 @@ export default () => {
       camera: Scene3D.camera,
       renderer: Scene3D.renderer,
     });
-    // RulerElement.init({
-    //   scene: Scene3D.scene,
-    //   camera: Scene3D.camera,
-    //   renderer: Scene3D.renderer,
-    // });
+  //   RulerElement.init({
+  //     scene: Scene3D.scene,
+  //     camera: Scene3D.camera,
+  //     renderer: Scene3D.renderer,
+  //   });
   }, []);
 
   const animate = () => {

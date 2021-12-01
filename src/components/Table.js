@@ -1,4 +1,5 @@
 import * as THREE from "three";
+import { CSG } from 'three-csg-ts';
 
 export default class Table {
   constructor(topPlane, sidePlane, backPlane) {
@@ -21,15 +22,15 @@ export default class Table {
     const leftSide = new THREE.Mesh(sideGeometry, bottomMaterial);
     leftSide.position.x = 5;
     leftSide.name = "side-plane";
-    scene.add(leftSide);
+    //scene.add(leftSide);
 
     const rightSide = new THREE.Mesh(sideGeometry, bottomMaterial);
     rightSide.position.x = -5;
     rightSide.name = "side-plane";
-    scene.add(rightSide);
+    //scene.add(rightSide);
 
     const topMaterial = new THREE.MeshLambertMaterial({
-      color: "#996633",
+      color: "#abdbe3",
       side: THREE.DoubleSide,
     });
 
@@ -38,10 +39,22 @@ export default class Table {
       this.topPlane.y,
       this.topPlane.z
     );
+
+    const sphere = new THREE.Mesh(new THREE.SphereGeometry(1.2, 8, 8));
+
     const topPlane = new THREE.Mesh(topGeometry, topMaterial);
     topPlane.position.y = 4;
     topPlane.rotateZ(-Math.PI / 2);
     topPlane.name = "top-plane";
+
+
+    //const subRes = CSG.subtract(topPlane, sphere);
+    //subRes.position.y = 4;
+    //subRes.rotateZ(-Math.PI / 2);
+    //subRes.name = "top-plane";
+
+
+
     scene.add(topPlane);
 
     const backGeometry = new THREE.BoxGeometry(
@@ -55,7 +68,7 @@ export default class Table {
     backPlane.position.z = 3;
     backPlane.rotateY(-Math.PI / 2);
     backPlane.name = "back-plane";
-    scene.add(backPlane);
+    //scene.add(backPlane);
 
     renderer.render(scene, camera);
   }
